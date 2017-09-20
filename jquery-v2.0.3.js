@@ -186,8 +186,14 @@ jQuery.fn = jQuery.prototype = {
 		// Shortcut for document ready
 		} else if ( jQuery.isFunction( selector ) ) {
 			return rootjQuery.ready( selector );
+			/*$(function() {
+				
+			}) 
+			$(document ).ready($(function() {
+				
+			})) */
 		}
-
+		// $($('#div'))
 		if ( selector.selector !== undefined ) {
 			this.selector = selector.selector;
 			this.context = selector.context;
