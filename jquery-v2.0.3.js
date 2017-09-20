@@ -124,10 +124,13 @@ jQuery.fn = jQuery.prototype = {
 					context = context instanceof jQuery ? context[0] : context;
 
 					// scripts is true for back-compat
+					// var str = '<li>1</li><li>2</li><li>3</li><script>alert(1)<\/script>' 
+					// jQuery.parseHTML转化成数组例如['li','li','li','script']
+					// jQuery.merge可以并数组，也可以合并特殊的json格式数据
 					jQuery.merge( this, jQuery.parseHTML(
 						match[1],
 						context && context.nodeType ? context.ownerDocument || context : document,
-						true
+						true // 第三个参数是true时，会执行script标签内容弹出‘1’
 					) );
 
 					// HANDLE: $(html, props)
