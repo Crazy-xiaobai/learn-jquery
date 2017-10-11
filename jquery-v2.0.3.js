@@ -344,6 +344,10 @@ jQuery.extend = jQuery.fn.extend = function() {
 						clone = src && jQuery.isArray(src) ? src : [];
 
 					} else {
+						// 防止被覆盖
+						// var a = { name : { job : 'it' } };
+						// var b = { name : {age : 30} };
+						// $.extend( true , a  , b );
 						clone = src && jQuery.isPlainObject(src) ? src : {};
 					}
 
@@ -366,7 +370,7 @@ jQuery.extend = jQuery.fn.extend = function() {
 jQuery.extend({
 	// Unique for each copy of jQuery on the page
 	expando: "jQuery" + ( core_version + Math.random() ).replace( /\D/g, "" ),
-
+	// jQuery防止冲突
 	noConflict: function( deep ) {
 		if ( window.$ === jQuery ) {
 			window.$ = _$;
